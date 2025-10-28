@@ -665,16 +665,25 @@ function HowIWorkSection() {
         </div>
 
         {/* Quote Section */}
-        <div className="bg-gradient-to-r from-primary/5 to-accent/5 border border-border rounded-2xl p-6 sm:p-8 md:p-10 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start sm:items-center">
-          <div className="flex-1">
-            <p className="text-sm sm:text-base text-foreground/80 leading-relaxed font-medium">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-center border border-border rounded-3xl p-6 sm:p-8 md:p-10">
+          <div className="lg:col-span-2 order-2 lg:order-1">
+            <p className="text-base sm:text-lg text-foreground/85 leading-relaxed font-medium scroll-reveal relative">
+              <span className="absolute -top-8 -left-2 text-5xl sm:text-6xl text-primary/20 font-bold">«</span>
               Усі п'ять етапів можуть виглядати по-різному. Я не продаю «шаблони», а формую індивідуальне рішення під ваш бізнес: від точкового антикризу до повної комунікаційної системи.
             </p>
           </div>
 
-          {/* Avatar */}
-          <div className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 border-4 border-primary/40 flex items-center justify-center shadow-lg shadow-primary/20">
-            <span className="text-foreground/30 text-sm font-medium">Фото</span>
+          {/* Image on the right */}
+          <div className="flex justify-center items-center order-1 lg:order-2">
+            <div className="relative p-1 bg-gradient-to-r from-primary/40 via-accent/40 to-primary/40 rounded-full animate-pulse-glow">
+              <Image
+                src="/photos/opinion.jpg"
+                alt="Вікторія Берещак"
+                width={160}
+                height={160}
+                className="w-32 h-32 sm:w-40 sm:h-40 rounded-full shadow-lg shadow-primary/20 object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>
