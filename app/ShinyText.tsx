@@ -14,3 +14,4 @@ export const ShinyText: React.FC<ShinyTextProps> = ({ text, speed = 3 }) => {
     </span>
   );
 };
+
