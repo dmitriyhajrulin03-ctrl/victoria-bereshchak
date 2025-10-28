@@ -886,7 +886,7 @@ function BlogSection() {
             <a
               key={post.id}
               href={`/blog/${post.slug}`}
-              className="group bg-card border border-border/50 rounded-2xl p-6 sm:p-8 block hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 scroll-reveal"
+              className="group bg-gradient-to-br from-primary/5 to-accent/5 border border-border/30 rounded-2xl p-6 sm:p-8 block hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 scroll-reveal"
             >
               <h3 className="text-xl sm:text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
                 {post.title}
