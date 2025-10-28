@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Instagram, Send } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -11,8 +12,19 @@ export default function Header() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-sm sm:text-lg font-bold tracking-tight leading-tight hover:text-primary transition-colors">
-            ВІКТОРІЯ<br />БЕРЕЩАК
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 hover:text-primary transition-colors">
+            <div className="relative p-1 bg-gradient-to-r from-primary/40 via-accent/40 to-primary/40 rounded-full animate-pulse-glow">
+              <Image
+                src="/photos/opinion.jpg"
+                alt="Вікторія Берещак"
+                width={40}
+                height={40}
+                className="w-10 h-10 rounded-full shadow-lg shadow-primary/20 object-cover"
+              />
+            </div>
+            <div className="text-sm sm:text-lg font-bold tracking-tight leading-none">
+              ВІКТОРІЯ БЕРЕЩАК
+            </div>
           </Link>
           
           {/* Desktop Menu */}
