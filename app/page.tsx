@@ -1013,7 +1013,7 @@ function FAQSection() {
     <section id="faq" className="py-12 sm:py-16 px-4 sm:px-6 bg-background">
       <div className="max-w-6xl mx-auto px-0 sm:px-6 md:px-8 lg:px-12">
         <div className="mb-8 sm:mb-12 scroll-reveal">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">Часті питання</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">Питання</h2>
           <div className="w-12 h-1 bg-primary rounded-full"></div>
         </div>
 

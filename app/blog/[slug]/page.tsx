@@ -96,7 +96,17 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
 
   const post = slug ? blogPosts[slug as keyof typeof blogPosts] : null;
 
-  if (isLoading || !post) {
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background text-foreground pt-32 px-4">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-foreground/70">Завантаження...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!post) {
     return (
       <div className="min-h-screen bg-background text-foreground pt-32 px-4">
         <div className="max-w-3xl mx-auto text-center">
@@ -115,8 +125,8 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
   return (
     <>
       <Header />
-    <article className="min-h-screen bg-background text-foreground pt-32 pb-12 sm:pb-16 md:pb-20">
-      <div className="max-w-6xl mx-auto px-0 sm:px-6 md:px-8 lg:px-12">
+    <article className="min-h-screen bg-background text-foreground pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8 sm:mb-12">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">
