@@ -137,7 +137,7 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
             <span>{post.author}</span>
             <span>•</span>
             <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-green-500" />
+              <Calendar className="w-4 h-4 text-primary" />
               <span>{new Date(post.date).toLocaleDateString('uk-UA', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
             </div>
           </div>

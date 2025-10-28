@@ -896,7 +896,7 @@ function BlogSection() {
               </p>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-foreground/60">
-                  <Calendar className="w-4 h-4 text-green-500" />
+                  <Calendar className="w-4 h-4 text-primary" />
                   <p className="text-sm">
                     {new Date(post.date).toLocaleDateString('uk-UA', { year: 'numeric', month: 'long', day: 'numeric' })}
                   </p>
