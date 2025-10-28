@@ -146,7 +146,7 @@ export default function Home() {
 }
 
 // Approach Section
-export function ApproachSection() {
+function ApproachSection() {
   return (
     <section id="approach" className="py-12 sm:py-16 px-4 sm:px-6 bg-background">
       <div className="max-w-6xl mx-auto px-0 sm:px-6 md:px-8 lg:px-12">
@@ -237,7 +237,7 @@ export function ApproachSection() {
 }
 
 // Why Trust Section
-export function WhyTrustSection() {
+function WhyTrustSection() {
   return (
     <section id="trust" className="py-12 sm:py-16 px-4 sm:px-6 bg-background">
       <div className="max-w-6xl mx-auto px-0 sm:px-6 md:px-8 lg:px-12">
@@ -331,7 +331,7 @@ export function WhyTrustSection() {
 }
 
 // Packages Section
-export function PackagesSection() {
+function PackagesSection() {
   const [currentPackage, setCurrentPackage] = React.useState(0);
 
   const packages = [
@@ -556,7 +556,7 @@ export function PackagesSection() {
 }
 
 // How I Work Section
-export function HowIWorkSection() {
+function HowIWorkSection() {
   const steps = [
     {
       id: 1,
@@ -683,7 +683,7 @@ export function HowIWorkSection() {
 }
 
 // Testimonials Section
-export function TestimonialsSection() {
+function TestimonialsSection() {
   const testimonials = [
     {
       id: 1,
@@ -782,7 +782,7 @@ const TestimonialSlider = ({ reviews }: { reviews: any[] }) => {
 };
 
 // Books Section
-export function BooksSection() {
+function BooksSection() {
   const books = [
     {
       id: 1,
@@ -863,7 +863,7 @@ export function BooksSection() {
 }
 
 // Blog Section
-export function BlogSection() {
+function BlogSection() {
   const blogPosts = [
     {
       id: 1,
@@ -908,7 +908,7 @@ export function BlogSection() {
 }
 
 // FAQ Section
-export function FAQSection() {
+function FAQSection() {
   const faqItems = [
     {
       id: 1,
@@ -1049,7 +1049,7 @@ export function FAQSection() {
 }
 
 // Footer Section
-export function FooterSection() {
+function FooterSection() {
   return (
     <footer 
       className="py-16 px-4 sm:px-6 text-stone-100 border-t border-stone-700"

@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
+import { useEffect, useState } from 'react';
 
 const blogPosts = {
   'yak-reaguvaty-na-kheit': {
@@ -82,10 +83,20 @@ const blogPosts = {
   }
 };
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = blogPosts[params.slug as keyof typeof blogPosts];
+export default function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const [slug, setSlug] = useState<string>('');
+  const [isLoading, setIsLoading] = useState(true);
 
-  if (!post) {
+  useEffect(() => {
+    params.then(resolvedParams => {
+      setSlug(resolvedParams.slug);
+      setIsLoading(false);
+    });
+  }, [params]);
+
+  const post = slug ? blogPosts[slug as keyof typeof blogPosts] : null;
+
+  if (isLoading || !post) {
     return (
       <div className="min-h-screen bg-background text-foreground pt-32 px-4">
         <div className="max-w-3xl mx-auto text-center">

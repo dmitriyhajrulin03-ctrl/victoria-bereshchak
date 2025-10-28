@@ -1,13 +1,34 @@
 'use client';
 
-import { useLayoutEffect, useRef, useCallback } from 'react';
+import { useLayoutEffect, useRef, useCallback, ReactNode } from 'react';
 import Lenis from 'lenis';
 
-export const ScrollStackItem = ({ children, itemClassName = '' }) => (
+interface ScrollStackItemProps {
+  children: ReactNode;
+  itemClassName?: string;
+}
+
+export const ScrollStackItem = ({ children, itemClassName = '' }: ScrollStackItemProps) => (
   <div className={`scroll-stack-card ${itemClassName}`.trim()}>{children}</div>
 );
 
-const ScrollStack = ({
+interface ScrollStackProps {
+  children: ReactNode;
+  className?: string;
+  itemDistance?: number;
+  itemScale?: number;
+  itemStackDistance?: number;
+  stackPosition?: string;
+  scaleEndPosition?: string;
+  baseScale?: number;
+  scaleDuration?: number;
+  rotationAmount?: number;
+  blurAmount?: number;
+  useWindowScroll?: boolean;
+  onStackComplete?: () => void;
+}
+
+const ScrollStack: React.FC<ScrollStackProps> = ({
   children,
   className = '',
   itemDistance = 100,
@@ -22,25 +43,25 @@ const ScrollStack = ({
   useWindowScroll = false,
   onStackComplete
 }) => {
-  const scrollerRef = useRef(null);
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
   const stackCompletedRef = useRef(false);
-  const animationFrameRef = useRef(null);
-  const lenisRef = useRef(null);
-  const cardsRef = useRef([]);
-  const lastTransformsRef = useRef(new Map());
+  const animationFrameRef = useRef<number | null>(null);
+  const lenisRef = useRef<Lenis | null>(null);
+  const cardsRef = useRef<HTMLElement[]>([]);
+  const lastTransformsRef = useRef(new Map<number, { translateY: number; scale: number; rotation: number; blur: number }>());
   const isUpdatingRef = useRef(false);
 
-  const calculateProgress = useCallback((scrollTop, start, end) => {
+  const calculateProgress = useCallback((scrollTop: number, start: number, end: number): number => {
     if (scrollTop < start) return 0;
     if (scrollTop > end) return 1;
     return (scrollTop - start) / (end - start);
   }, []);
 
-  const parsePercentage = useCallback((value, containerHeight) => {
+  const parsePercentage = useCallback((value: string | number, containerHeight: number): number => {
     if (typeof value === 'string' && value.includes('%')) {
       return (parseFloat(value) / 100) * containerHeight;
     }
-    return parseFloat(value);
+    return typeof value === 'string' ? parseFloat(value) : value;
   }, []);
 
   const getScrollData = useCallback(() => {
@@ -53,15 +74,15 @@ const ScrollStack = ({
     } else {
       const scroller = scrollerRef.current;
       return {
-        scrollTop: scroller.scrollTop,
-        containerHeight: scroller.clientHeight,
+        scrollTop: scroller?.scrollTop ?? 0,
+        containerHeight: scroller?.clientHeight ?? 0,
         scrollContainer: scroller
       };
     }
   }, [useWindowScroll]);
 
   const getElementOffset = useCallback(
-    element => {
+    (element: HTMLElement): number => {
       if (useWindowScroll) {
         const rect = element.getBoundingClientRect();
         return rect.top + window.scrollY;
@@ -85,7 +106,7 @@ const ScrollStack = ({
       ? document.querySelector('.scroll-stack-end')
       : scrollerRef.current?.querySelector('.scroll-stack-end');
 
-    const endElementTop = endElement ? getElementOffset(endElement) : 0;
+    const endElementTop = endElement ? getElementOffset(endElement as HTMLElement) : 0;
 
     cardsRef.current.forEach((card, i) => {
       if (!card) return;
@@ -200,7 +221,7 @@ const ScrollStack = ({
 
       lenis.on('scroll', handleScroll);
 
-      const raf = time => {
+      const raf = (time: number) => {
         lenis.raf(time);
         animationFrameRef.current = requestAnimationFrame(raf);
       };
@@ -214,25 +235,21 @@ const ScrollStack = ({
 
       const lenis = new Lenis({
         wrapper: scroller,
-        content: scroller.querySelector('.scroll-stack-inner'),
+        content: scroller.querySelector('.scroll-stack-inner') as HTMLElement | undefined,
         duration: 1.2,
         easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
         touchMultiplier: 2,
         infinite: false,
-        gestureOrientationHandler: true,
-        normalizeWheel: true,
         wheelMultiplier: 1,
-        touchInertiaMultiplier: 35,
         lerp: 0.1,
         syncTouch: true,
-        syncTouchLerp: 0.075,
-        touchInertia: 0.6
+        syncTouchLerp: 0.075
       });
 
       lenis.on('scroll', handleScroll);
 
-      const raf = time => {
+      const raf = (time: number) => {
         lenis.raf(time);
         animationFrameRef.current = requestAnimationFrame(raf);
       };
