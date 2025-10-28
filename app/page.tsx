@@ -491,11 +491,11 @@ function PackagesSection() {
                     return (
                       <li key={idx} className="flex gap-3 sm:gap-4 items-start">
                         <div className="flex-shrink-0">
-                          <div className="w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-br from-primary/30 to-accent/30 rounded-full flex items-center justify-center text-primary font-bold text-xs">
-                            {IconComponent ? <IconComponent className="w-3 h-3 sm:w-4 sm:h-4" /> : feature.icon}
+                          <div className="w-6 h-6 sm:w-7 sm:h-7 bg-gradient-to-br from-primary/30 to-accent/30 rounded-full flex items-center justify-center text-primary font-bold">
+                            {IconComponent ? <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" /> : feature.icon}
                           </div>
                         </div>
-                        <p className="text-xs sm:text-sm text-foreground/70 leading-relaxed">
+                        <p className="text-sm sm:text-base text-foreground/70 leading-relaxed">
                           {feature.title}
                         </p>
                       </li>
