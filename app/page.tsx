@@ -744,7 +744,7 @@ const TestimonialSlider = ({ reviews }: { reviews: any[] }) => {
   };
 
   return (
-    <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 md:p-10">
+    <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-6 sm:p-8 md:p-10">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-8">
         {/* Text Content */}
         <div className="flex-1">
@@ -768,7 +768,7 @@ const TestimonialSlider = ({ reviews }: { reviews: any[] }) => {
         <div className="flex items-center gap-3 flex-shrink-0">
           <button
             onClick={handlePrev}
-            className="flex items-center justify-center w-12 h-12 rounded-full border border-primary/20 hover:bg-primary/10 transition-all duration-300"
+            className="flex items-center justify-center w-12 h-12 rounded-full border border-primary/40 hover:bg-primary/10 transition-all duration-300"
             aria-label="Previous review"
           >
             <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
