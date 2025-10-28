@@ -6,7 +6,6 @@ import { Target, Layers, TrendingUp, Instagram, Send, MessageCircle, FileText, H
 import ScrollStack, { ScrollStackItem } from "./ScrollStack";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import DarkVeil from "./components/DarkVeil";
 
 export default function Home() {
   // Scroll reveal animation
@@ -36,12 +35,7 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 px-4 sm:px-6 bg-white mt-20 overflow-hidden">
-        {/* DarkVeil Background */}
-        <div className="absolute inset-0 opacity-20">
-          <DarkVeil />
-        </div>
-        
+      <section className="relative pt-32 pb-16 px-4 sm:px-6 bg-gradient-to-br from-primary/5 to-accent/5 mt-20 overflow-hidden">
         <div className="max-w-6xl mx-auto px-0 sm:px-6 md:px-8 lg:px-12 relative z-10">
           <div className="max-w-2xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
