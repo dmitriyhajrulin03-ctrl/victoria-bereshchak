@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
 import { useEffect, useState } from 'react';
+import { Calendar } from 'lucide-react';
 
 const blogPosts = {
   'yak-reaguvaty-na-kheit': {
@@ -135,7 +136,10 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
           <div className="flex items-center gap-4 text-foreground/70">
             <span>{post.author}</span>
             <span>•</span>
-            <span>{new Date(post.date).toLocaleDateString('uk-UA', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-green-500" />
+              <span>{new Date(post.date).toLocaleDateString('uk-UA', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </div>
           </div>
         </div>
 

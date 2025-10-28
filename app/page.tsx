@@ -895,9 +895,12 @@ function BlogSection() {
                 {post.excerpt}
               </p>
               <div className="flex items-center justify-between">
-                <p className="text-sm text-foreground/60">
-                  {new Date(post.date).toLocaleDateString('uk-UA', { year: 'numeric', month: 'long', day: 'numeric' })}
-                </p>
+                <div className="flex items-center gap-2 text-foreground/60">
+                  <Calendar className="w-4 h-4 text-green-500" />
+                  <p className="text-sm">
+                    {new Date(post.date).toLocaleDateString('uk-UA', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </p>
+                </div>
                 <span className="text-primary font-semibold group-hover:translate-x-2 transition-transform duration-300">→</span>
               </div>
             </a>
