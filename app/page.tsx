@@ -843,8 +843,8 @@ function BooksSection() {
                     const IconComponent = point.icon;
                     return (
                       <li key={idx} className="flex items-start gap-2">
-                        <IconComponent className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                        <span className="text-xs sm:text-sm text-foreground/70">{point.text}</span>
+                        <IconComponent className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                        <span className="text-sm sm:text-base text-foreground/70">{point.text}</span>
                       </li>
                     );
                   })}
