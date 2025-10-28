@@ -6,6 +6,7 @@ import { Target, Layers, TrendingUp, Instagram, Send, MessageCircle, FileText, H
 import ScrollStack, { ScrollStackItem } from "./ScrollStack";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import DarkVeil from "./components/DarkVeil";
 
 export default function Home() {
   // Scroll reveal animation
@@ -35,8 +36,13 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 sm:px-6 bg-background mt-20">
-        <div className="max-w-6xl mx-auto px-0 sm:px-6 md:px-8 lg:px-12">
+      <section className="relative pt-32 pb-16 px-4 sm:px-6 bg-background mt-20 overflow-hidden">
+        {/* DarkVeil Background */}
+        <div className="absolute inset-0 opacity-20">
+          <DarkVeil />
+        </div>
+        
+        <div className="max-w-6xl mx-auto px-0 sm:px-6 md:px-8 lg:px-12 relative z-10">
           <div className="max-w-2xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
               Вікторія Берещак
