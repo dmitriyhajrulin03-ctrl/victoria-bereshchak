@@ -52,13 +52,10 @@ git push -u origin main
 
 Netlify автоматично побачить `netlify.toml` і налаштує:
 - **Build command:** `npm run build`
-- **Publish directory:** `.next`
-- **Functions directory:** (залиште порожнім)
+- **Publish directory:** (залиште порожнім - Next.js плагін обробляє автоматично)
+- **Node version:** 20
 
-Якщо автоматично не підтягнуло:
-
-1. **Build command:** `npm run build`
-2. **Publish directory:** `.next`
+**Налаштування не потребуються** - все налаштовано автоматично через `netlify.toml`!
 
 ### 2.4. Деплой!
 
