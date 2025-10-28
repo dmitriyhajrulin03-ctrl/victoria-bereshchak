@@ -1,14 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Target, Layers, TrendingUp, Instagram, Send, MessageCircle, FileText, HelpCircle, Calendar, BookOpen, Palette, BarChart3, Users, Lightbulb, CheckCircle2, Zap, Award, Search, Wrench, Rocket, CircleCheck, Sparkles, FileCheck, GraduationCap, ArrowRight, TrendingDown, Shuffle, Shield } from "lucide-react";
 import ScrollStack, { ScrollStackItem } from "./ScrollStack";
-import React from "react"; // Added for useState
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   // Scroll reveal animation
   useEffect(() => {
     const revealElements = document.querySelectorAll('.scroll-reveal');
@@ -33,63 +32,10 @@ export default function Home() {
 
   return (
     <>
-      <div className="min-h-screen bg-background text-foreground">
-        {/* Navigation */}
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/50">
-          <div className="max-w-6xl mx-auto w-full">
-            <div className="px-4 sm:px-6 md:px-8 lg:px-12 py-4 flex items-center justify-between">
-            <div className="flex items-center gap-2 min-w-0">
-              <div className="text-sm sm:text-lg font-bold tracking-tight leading-tight">
-                ВІКТОРІЯ<br />БЕРЕЩАК
-              </div>
-            </div>
-            
-            {/* Desktop Menu */}
-            <ul className="hidden md:flex items-center gap-6 lg:gap-8">
-              <li><a href="#approach" className="hover:text-primary transition-colors text-sm font-medium">Мій підхід</a></li>
-              <li><a href="#trust" className="hover:text-primary transition-colors text-sm font-medium">Чому довіряють</a></li>
-              <li><a href="#formats" className="hover:text-primary transition-colors text-sm font-medium">Формати</a></li>
-              <li><a href="#books" className="hover:text-primary transition-colors text-sm font-medium">Книги</a></li>
-              <li><a href="#blog" className="hover:text-primary transition-colors text-sm font-medium">Блог</a></li>
-              <li className="w-px h-6 bg-border/30"></li>
-              <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors"><Instagram className="w-5 h-5" /></a></li>
-              <li><a href="https://telegram.me" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors"><Send className="w-5 h-5" /></a></li>
-            </ul>
-
-            {/* Mobile Menu Button */}
-            <button 
-              className="md:hidden p-2 hover:bg-muted rounded-lg transition-colors"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
-          </div>
-
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="md:hidden border-t border-border bg-background">
-              <ul className="flex flex-col gap-2 p-4">
-                <li><a href="#approach" className="block py-2 hover:text-primary transition-colors font-medium">Мій підхід</a></li>
-                <li><a href="#trust" className="block py-2 hover:text-primary transition-colors font-medium">Чому довіряють</a></li>
-                <li><a href="#formats" className="block py-2 hover:text-primary transition-colors font-medium">Формати співпраці</a></li>
-                <li><a href="#books" className="block py-2 hover:text-primary transition-colors font-medium">Книги</a></li>
-                <li><a href="#blog" className="block py-2 hover:text-primary transition-colors font-medium">Мій блог</a></li>
-                <li className="border-t border-border/30 mt-2 pt-2">
-                  <div className="flex gap-4">
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors"><Instagram className="w-5 h-5" /></a>
-                    <a href="https://telegram.me" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors"><Send className="w-5 h-5" /></a>
-                  </div>
-          </li>
-              </ul>
-            </div>
-          )}
-        </nav>
+      <Header />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 sm:px-6 bg-background mt-14 sm:mt-0">
+      <section className="pt-32 pb-16 px-4 sm:px-6 bg-background mt-20">
         <div className="max-w-6xl mx-auto px-0 sm:px-6 md:px-8 lg:px-12">
           <div className="max-w-2xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
@@ -137,10 +83,9 @@ export default function Home() {
 
       {/* FAQ Section */}
       <FAQSection />
-
-      {/* Footer */}
-      <FooterSection />
       </div>
+
+      <Footer />
     </>
   );
 }
@@ -332,7 +277,7 @@ function WhyTrustSection() {
 
 // Packages Section
 function PackagesSection() {
-  const [currentPackage, setCurrentPackage] = React.useState(0);
+  const [currentPackage, setCurrentPackage] = useState(0);
 
   const packages = [
     {
@@ -731,7 +676,7 @@ function TestimonialsSection() {
 
 // Testimonial Slider Component (without images)
 const TestimonialSlider = ({ reviews }: { reviews: any[] }) => {
-  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const activeReview = reviews[currentIndex];
 
@@ -1060,65 +1005,3 @@ function FAQSection() {
   );
 }
 
-// Footer Section
-function FooterSection() {
-  return (
-    <footer 
-      className="py-16 px-4 sm:px-6 text-stone-100 border-t border-stone-700"
-      style={{ backgroundColor: '#5a5345' }}
-    >
-      <div className="max-w-6xl mx-auto px-0 sm:px-6 md:px-8 lg:px-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-12">
-          {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
-            <h3 className="text-xl sm:text-2xl font-bold mb-2 tracking-tight">
-              ВІКТОРІЯ<br />БЕРЕЩАК
-            </h3>
-            <p className="text-xs sm:text-sm text-background/60 mt-4">
-              © 2024 Всі права захищені
-            </p>
-          </div>
-
-          {/* Navigation */}
-          <div>
-            <h4 className="font-semibold text-sm sm:text-base mb-3 sm:mb-4">Навігація</h4>
-            <ul className="space-y-2 text-sm sm:text-base">
-              <li><a href="#approach" className="text-background/80 hover:text-background transition-colors">Мій підхід</a></li>
-              <li><a href="#trust" className="text-background/80 hover:text-background transition-colors">Чому довіряють</a></li>
-              <li><a href="#formats" className="text-background/80 hover:text-background transition-colors">Пакети</a></li>
-              <li><a href="#process" className="text-background/80 hover:text-background transition-colors">Процес</a></li>
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h4 className="font-semibold text-sm sm:text-base mb-3 sm:mb-4">Ресурси</h4>
-            <ul className="space-y-2 text-sm sm:text-base">
-              <li><a href="#testimonials" className="text-background/80 hover:text-background transition-colors">Відгуки</a></li>
-              <li><a href="#books" className="text-background/80 hover:text-background transition-colors">Книги</a></li>
-              <li><a href="#faq" className="text-background/80 hover:text-background transition-colors">FAQ</a></li>
-              <li><a href="#blog" className="text-background/80 hover:text-background transition-colors">Блог</a></li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-semibold text-sm sm:text-base mb-3 sm:mb-4">Контакти</h4>
-            <ul className="space-y-2 text-sm sm:text-base">
-              <li><a href="mailto:hello@victoria.com" className="text-background/80 hover:text-background transition-colors break-all">hello@victoria.com</a></li>
-              <li><a href="tel:+380123456789" className="text-background/80 hover:text-background transition-colors">+38 (012) 345-67-89</a></li>
-              <li className="text-background/60 text-xs sm:text-sm pt-2">Київ, Україна</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div className="border-t border-background/20 pt-6 sm:pt-8">
-          <p className="text-xs sm:text-sm text-background/60 text-center">
-            Розроблено з ☕ та увагою до деталей
-          </p>
-        </div>
-      </div>
-      </footer>
-  );
-}
