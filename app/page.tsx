@@ -36,7 +36,7 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 px-4 sm:px-6 bg-background mt-20 overflow-hidden">
+      <section className="relative pt-32 pb-16 px-4 sm:px-6 bg-white mt-20 overflow-hidden">
         {/* DarkVeil Background */}
         <div className="absolute inset-0 opacity-20">
           <DarkVeil />
