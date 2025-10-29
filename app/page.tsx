@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Target, Layers, TrendingUp, Instagram, Send, MessageCircle, FileText, HelpCircle, Calendar, BookOpen, Palette, BarChart3, Users, Lightbulb, CheckCircle2, Zap, Award, Search, Wrench, Rocket, CircleCheck, Sparkles, FileCheck, GraduationCap, ArrowRight, TrendingDown, Shuffle, Shield } from "lucide-react";
+import { Target, Layers, TrendingUp, Instagram, Send, MessageCircle, FileText, HelpCircle, Calendar, BookOpen, Palette, BarChart3, Users, Lightbulb, CheckCircle2, Zap, Award, Search, Wrench, Rocket, CircleCheck, Sparkles, FileCheck, GraduationCap, ArrowRight, TrendingDown, Shuffle, Shield, Handshake, Briefcase, Clock } from "lucide-react";
 import ScrollStack, { ScrollStackItem } from "./ScrollStack";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -45,15 +45,17 @@ export default function Home() {
             </h1>
             
             <p className="text-lg sm:text-xl md:text-2xl text-foreground/85 mb-8 leading-relaxed">
-              Я створюю системи комунікацій, які тримають позицію бренду, будують репутаційний капітал і допомагають дітям впевнено — навіть у кризі.
+              Я створюю системи комунікацій, які тримають позицію бренду, будують репутаційний капітал і допомагають діяти впевнено — навіть у кризі.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
-              <button className="btn-primary text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4">
-                Обговорити ваш кейс →
+              <button className="btn-primary text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 flex items-center justify-center gap-2">
+                <MessageCircle className="w-5 h-5" />
+                Обговорити ваш кейс
               </button>
-              <button className="px-6 sm:px-8 py-3 sm:py-4 bg-muted text-muted-foreground rounded-full font-semibold hover:bg-muted/80 transition-all hover:shadow-lg text-sm sm:text-base active:scale-95">
-                Мої формати →
+              <button className="px-6 sm:px-8 py-3 sm:py-4 bg-muted text-muted-foreground rounded-full font-semibold hover:bg-muted/80 transition-all hover:shadow-lg text-sm sm:text-base active:scale-95 flex items-center justify-center gap-2">
+                <Briefcase className="w-5 h-5" />
+                Мої формати співпраці
               </button>
             </div>
           </div>
@@ -366,6 +368,29 @@ function PackagesSection() {
           icon: 'Award'
         }
       ]
+    },
+    {
+      id: 5,
+      title: 'Пакет «Антикриз»',
+      description: 'Авторський фрейм «3Р кризової заяви» (Реальність — Рішення — Ресурс), кризовий меседжинг і Q&A для спікерів, покроковий алгоритм реагування (соцмережі, медіа, внутрішня комунікація), готові фреймворки меседжів і сценарії дій, тренування спікерів і моделювання кризових ситуацій.',
+      features: [
+        {
+          title: 'У компанії є готові фрейми і формули відповіді, які можна використати в будь-який момент.',
+          icon: 'Shield'
+        },
+        {
+          title: 'Керівництво і спікери отримують чіткі тези для складних і провокаційних питань.',
+          icon: 'HelpCircle'
+        },
+        {
+          title: 'Команда має алгоритм дій на перші 24 години кризи — хто говорить, що говорить і де.',
+          icon: 'Clock'
+        },
+        {
+          title: 'Замість хаосу та паніки — системна реакція, яка зберігає довіру аудиторії, партнерів і ринку.',
+          icon: 'CheckCircle2'
+        }
+      ]
     }
   ];
 
@@ -429,6 +454,8 @@ function PackagesSection() {
                       'Zap': Zap,
                       'Award': Award,
                       'Target': Target,
+                      'Shield': Shield,
+                      'Clock': Clock,
                     };
                     const IconComponent = iconMap[feature.icon] || null;
                     
