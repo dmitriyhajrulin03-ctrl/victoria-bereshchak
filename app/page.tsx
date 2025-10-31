@@ -6,6 +6,7 @@ import { Target, Layers, TrendingUp, Instagram, Send, MessageCircle, FileText, H
 import ScrollStack, { ScrollStackItem } from "./ScrollStack";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { AuroraBackground } from "./components/AuroraBackground";
 
 export default function Home() {
   // Scroll reveal animation
@@ -156,7 +157,7 @@ function ApproachSection() {
         </div>
 
         {/* Bottom Section with Quote and Image */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-center border border-border rounded-3xl p-6 sm:p-8 md:p-10">
+        <AuroraBackground className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-center border border-border rounded-3xl p-6 sm:p-8 md:p-10 relative">
           <div className="lg:col-span-2 order-2 lg:order-1">
             <p className="text-base sm:text-lg text-foreground/85 leading-relaxed font-medium scroll-reveal relative">
               <span className="absolute -top-8 -left-2 text-5xl sm:text-6xl text-primary/20 font-bold">«</span>
@@ -176,7 +177,7 @@ function ApproachSection() {
               />
             </div>
           </div>
-        </div>
+        </AuroraBackground>
       </div>
     </section>
   );
@@ -305,6 +306,29 @@ function PackagesSection() {
       ]
     },
     {
+      id: 5,
+      title: 'Пакет «Антикриз»',
+      description: 'Авторський фрейм «3Р кризової заяви» (Реальність — Рішення — Ресурс), кризовий меседжинг і Q&A для спікерів, покроковий алгоритм реагування (соцмережі, медіа, внутрішня комунікація), готові фреймворки меседжів і сценарії дій, тренування спікерів і моделювання кризових ситуацій.',
+      features: [
+        {
+          title: 'У компанії є готові фрейми і формули відповіді, які можна використати в будь-який момент.',
+          icon: 'Shield'
+        },
+        {
+          title: 'Керівництво і спікери отримують чіткі тези для складних і провокаційних питань.',
+          icon: 'HelpCircle'
+        },
+        {
+          title: 'Команда має алгоритм дій на перші 24 години кризи — хто говорить, що говорить і де.',
+          icon: 'Clock'
+        },
+        {
+          title: 'Замість хаосу та паніки — системна реакція, яка зберігає довіру аудиторії, партнерів і ринку.',
+          icon: 'CheckCircle2'
+        }
+      ]
+    },
+    {
       id: 2,
       title: 'Пакет «Видимість»',
       description: 'Архітектура експертності, мапа інфоприводів, маршрут довіри, система форматів/каналів, KPI та індекси (репутація, MCI, CV, довіра).',
@@ -366,29 +390,6 @@ function PackagesSection() {
         {
           title: 'Кожен меседж і кожна дія підсилюють капітал довіри — головну валюту бізнесу і держави. Довгостроково компанія формує позицію і вплив на ринку, а не просто «публічність».',
           icon: 'Award'
-        }
-      ]
-    },
-    {
-      id: 5,
-      title: 'Пакет «Антикриз»',
-      description: 'Авторський фрейм «3Р кризової заяви» (Реальність — Рішення — Ресурс), кризовий меседжинг і Q&A для спікерів, покроковий алгоритм реагування (соцмережі, медіа, внутрішня комунікація), готові фреймворки меседжів і сценарії дій, тренування спікерів і моделювання кризових ситуацій.',
-      features: [
-        {
-          title: 'У компанії є готові фрейми і формули відповіді, які можна використати в будь-який момент.',
-          icon: 'Shield'
-        },
-        {
-          title: 'Керівництво і спікери отримують чіткі тези для складних і провокаційних питань.',
-          icon: 'HelpCircle'
-        },
-        {
-          title: 'Команда має алгоритм дій на перші 24 години кризи — хто говорить, що говорить і де.',
-          icon: 'Clock'
-        },
-        {
-          title: 'Замість хаосу та паніки — системна реакція, яка зберігає довіру аудиторії, партнерів і ринку.',
-          icon: 'CheckCircle2'
         }
       ]
     }
@@ -636,7 +637,7 @@ function HowIWorkSection() {
         </div>
 
         {/* Quote Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-center border border-border rounded-3xl p-6 sm:p-8 md:p-10">
+        <AuroraBackground className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-center border border-border rounded-3xl p-6 sm:p-8 md:p-10 relative">
           <div className="lg:col-span-2 order-2 lg:order-1">
             <p className="text-base sm:text-lg text-foreground/85 leading-relaxed font-medium scroll-reveal relative">
               <span className="absolute -top-8 -left-2 text-5xl sm:text-6xl text-primary/20 font-bold">«</span>
@@ -656,7 +657,7 @@ function HowIWorkSection() {
               />
             </div>
           </div>
-        </div>
+        </AuroraBackground>
       </div>
     </section>
   );

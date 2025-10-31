@@ -302,6 +302,79 @@
   }
 }
 
+@keyframes animated-gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes floating-shapes {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.3;
+  }
+  33% {
+    transform: translate(30px, -30px) rotate(120deg);
+    opacity: 0.5;
+  }
+  66% {
+    transform: translate(-20px, 20px) rotate(240deg);
+    opacity: 0.4;
+  }
+}
+
+@keyframes word-fade-in-out {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.9);
+  }
+}
+
+@keyframes word-drift {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(20px, -15px) rotate(2deg);
+  }
+  50% {
+    transform: translate(-15px, 20px) rotate(-2deg);
+  }
+  75% {
+    transform: translate(10px, 10px) rotate(1deg);
+  }
+}
+
+@keyframes aurora {
+  0%, 100% {
+    background-position: 50% 50%, 50% 50%;
+  }
+  25% {
+    background-position: 0% 50%, 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%, 0% 100%;
+  }
+  75% {
+    background-position: 50% 0%, 50% 0%;
+  }
+}
+
 /* Animation Classes */
 @layer utilities {
   .animate-appear {
@@ -322,6 +395,10 @@
 
   .animate-fade-in-up {
     animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  .animate-aurora {
+    animation: aurora 60s ease-in-out infinite;
   }
 
   .scroll-reveal {
@@ -381,6 +458,221 @@
 
   .delay-1000 {
     animation-delay: 1s;
+  }
+
+  .animated-quote-bg {
+    position: relative;
+    background: white;
+    overflow: hidden;
+  }
+
+  .animated-quote-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      hsl(119deg 45% 55% / 0.03) 0%,
+      hsl(60deg 30% 70% / 0.03) 25%,
+      hsl(119deg 45% 55% / 0.03) 50%,
+      hsl(60deg 30% 70% / 0.03) 75%,
+      hsl(119deg 45% 55% / 0.03) 100%
+    );
+    background-size: 400% 400%;
+    animation: animated-gradient 15s ease infinite;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .animated-quote-bg > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .animated-quote-bg::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, hsl(119deg 45% 55% / 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    top: -50px;
+    right: -50px;
+    animation: floating-shapes 20s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  .animated-quote-bg::before {
+    opacity: 0.6;
+  }
+
+  .floating-word {
+    position: absolute;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+    opacity: 0.12;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+    white-space: nowrap;
+    animation: word-fade-in-out 6s ease-in-out infinite, word-drift 8s ease-in-out infinite;
+  }
+
+  @media (min-width: 640px) {
+    .floating-word {
+      font-size: 1.25rem;
+      opacity: 0.15;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .floating-word {
+      font-size: 1.5rem;
+      opacity: 0.18;
+    }
+  }
+
+  .floating-word:nth-child(1) {
+    top: 5%;
+    left: 2%;
+    animation-delay: 0s;
+  }
+
+  .floating-word:nth-child(2) {
+    top: 15%;
+    right: 2%;
+    animation-delay: 1s;
+    animation-duration: 7s, 9s;
+  }
+
+  .floating-word:nth-child(3) {
+    bottom: 10%;
+    left: 2%;
+    animation-delay: 2s;
+    animation-duration: 8s, 10s;
+  }
+
+  .floating-word:nth-child(4) {
+    top: 70%;
+    right: 5%;
+    animation-delay: 3s;
+    animation-duration: 6.5s, 8.5s;
+  }
+
+  .floating-word:nth-child(5) {
+    bottom: 5%;
+    right: 2%;
+    animation-delay: 4s;
+    animation-duration: 7.5s, 9.5s;
+  }
+
+  .floating-word:nth-child(6) {
+    top: 50%;
+    left: 3%;
+    animation-delay: 5s;
+    animation-duration: 6.8s, 8.8s;
+  }
+
+  /* На мобільних пристроях зменшуємо розміри і зміщуємо ще далі від центру */
+  @media (max-width: 1024px) {
+    .floating-word:nth-child(4) {
+      top: 65%;
+      right: 3%;
+    }
+    
+    .floating-word:nth-child(6) {
+      top: 40%;
+      left: 2%;
+    }
+  }
+
+  /* Newspaper Quote Style */
+  .newspaper-quote {
+    background: white;
+    position: relative;
+    padding: 1.5rem;
+    box-shadow: 
+      0 2px 8px rgba(0, 0, 0, 0.08),
+      0 1px 3px rgba(0, 0, 0, 0.05),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  @media (min-width: 640px) {
+    .newspaper-quote {
+      padding: 2rem;
+    }
+  }
+
+  .newspaper-quote::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--primary) 0px,
+      var(--primary) 24px,
+      transparent 24px,
+      transparent 48px
+    );
+    opacity: 0.6;
+  }
+
+  .newspaper-quote::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary);
+    opacity: 0.25;
+  }
+
+  .newspaper-quote-text {
+    position: relative;
+    padding-left: 1.5rem;
+    padding-top: 0.5rem;
+    border-left: 4px solid var(--primary);
+    font-style: italic;
+    line-height: 1.85;
+    letter-spacing: 0.015em;
+    color: var(--foreground);
+  }
+
+  @media (min-width: 640px) {
+    .newspaper-quote-text {
+      padding-left: 2rem;
+      border-left-width: 5px;
+    }
+  }
+
+  .newspaper-quote-mark {
+    position: absolute;
+    top: -0.3rem;
+    left: -1.2rem;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--primary);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+    font-weight: normal;
+  }
+
+  @media (min-width: 640px) {
+    .newspaper-quote-mark {
+      font-size: 4.5rem;
+      left: -1.5rem;
+    }
   }
 }
 
